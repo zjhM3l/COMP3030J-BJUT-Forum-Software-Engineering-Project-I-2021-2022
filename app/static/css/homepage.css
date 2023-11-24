@@ -1,0 +1,269 @@
+div.postOne{
+    margin-bottom: 15px;
+    /*position: relative;*/
+    /*  left: 25%;*/
+}
+
+form.formOne{
+  position: relative;
+  margin-left: 25%;
+  margin-top: 500px;
+}
+
+input.postThree{
+  position: relative;
+  margin-top: -18px;
+  outline: none;
+  border:0;
+
+  border-bottom: 2px solid #7e7e7e;
+  width: 70%;
+  font-size: 20px;
+}
+
+input.postThree.line{
+  width: 800px;
+}
+
+textarea.postTwo {
+  position: relative;
+
+  display: block;
+  width: 70%;
+  height: 340px;
+  padding: 6px 12px;
+  font-size: 18px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  /*box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);*/
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 20px 0 rgba(0, 0, 0, 0.19);
+
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  /*top: calc(50% - 270px);*/
+}
+
+
+input.postFour{
+    outline: none;
+    border:0;
+
+  border-bottom: 2px solid #7e7e7e;
+  width: 70%;
+  font-size: 20px;
+
+}
+
+input.submit_one{
+  background-color: #3b95ff;
+
+    border: none;
+    color: white;
+    padding: 10px 10px;
+  font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+  text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: -40px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  border-radius: 8px;
+}
+
+input.sub_one:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  }
+
+input.submit_two{
+  background-color: #0baabe;
+  position: absolute;
+    border: none;
+    color: white;
+    padding: 5px 14px;
+  font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: -29px 110%;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  border-radius: 8px;
+}
+
+label.postThree{
+text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+button.searchBtn{
+  background-color: #3b95ff;
+
+    border: none;
+    color: white;
+    padding: 8px 10px;
+  font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: -40px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  border-radius: 3px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+button.searchBtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+button.searchBtn span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+button.searchBtn:hover span {
+  padding-right: 25px;
+}
+
+button.searchBtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+button.jumpBtn{
+  position: relative;
+  margin-top: 55px;
+  margin-left: 18%;
+  /*margin-bottom: 80%;*/
+  background-color: #2081fc;
+  border: none;
+  color: white;
+  padding: 9px 10px;
+  font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border-radius: 3px;
+  z-index: 1000;
+}
+
+button.jumpBtn:hover {
+  background-color: #046ee1;
+}
+
+button.jumpBtn.a{
+  left: -40px;
+  top: 45px;
+}
+
+button.jumpBtn.foll.f{
+  top: 45px;
+}
+
+button.jumpBtn.foll{
+  margin-left: 26px;
+  padding: 10px 10px;
+  background-color: white;
+  border: 2px solid #2081fc;
+
+}
+
+button.jumpBtn.foll:hover {
+  background-color: #cee1f6;
+}
+
+label.size{
+  font-size: 18px;
+  color: #2081fc;
+}
+
+label.count{
+  font-size: 10px;
+  color: #282828;
+  /*position: relative;*/
+  /*margin-left: 35px;*/
+  /*top: 32px*/
+}
+
+div.post-body{
+  font-size: 16px;
+  line-height: 170%;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+#exp:checked+div.post-body{
+  -webkit-line-clamp: 999;
+  max-height: none;
+}
+
+.btn::after{
+  content:'Expand' /*采用content生成*/
+}
+
+#exp:checked + .post-body .btn::after {
+content: ' Hide ';
+}
+
+#exp:checked + .post-body .btn::before {
+visibility: hidden;
+}
+
+label.btn{
+  position: relative;
+  left: 650px;
+  top: -4px;
+}
+
+
+textarea.form-control.flask-pagedown-input.tableSize{
+  height: 200px;
+}
+
+select.selectPosition{
+  position: absolute;
+  margin-left: 520px;
+  margin-top: 45px;
+  border: none;
+  width: 130px;
+  color: #046ee1;
+}
+
+form.newForm{
+  position: absolute;
+  left: 660px;
+  margin-top: 47px;
+}
+
+input.btn.btn-default.new{
+  outline: none;
+  color: #2080af;
+}

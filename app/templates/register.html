@@ -1,0 +1,200 @@
+<!--<!DOCTYPE html>-->
+{% extends "bootstrap/base.html" %}
+{% block content %}
+
+<head>
+    <link rel="stylesheet" href="../static/css/text.css" type="text/css">
+    <link rel="stylesheet" href="../static/css_userinfo/userinfo.css" type="text/css">
+
+<style>
+    body{
+        background-position: center 0;
+        background-repeat: no-repeat;
+        background-image: url('../static/img/8.jpg');
+        /*background-size: 100%;*/
+        background-attachment:fixed;
+    background-size: cover;
+        -webkit-background-size: cover;/* 兼容Webkit内核浏览器如Chrome和Safari */
+    -o-background-size: cover;/* 兼容Opera */
+    zoom: 1;
+
+        /*对8*/
+        /*background-size: 104%;*/
+    }
+</style>
+    <title>Login WeTalk</title>
+
+</head>
+<body>
+
+<div class="contain flash" >
+	{% for message in get_flashed_messages() %}
+	<div class="alert alert-info">
+    <button type="button" class="closeU xxx" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">Close</span>
+  </button>
+
+        <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+	</div>
+
+
+<!--background-color: white;-->
+<!--        opacity:0.1-->
+<div class="box_register"></div>
+
+
+<div id="log_one" class="log">
+    <div class="line">
+        <p class="choose"><a class="back" href="{{url_for('auth.login')}}">Login</a></p>
+        <p class="choose1"><a class="back" href="{{url_for('auth.register')}}"><u>Register</u></a></p>
+        </div>
+<br>
+<form action="" method="post" novalidate>
+     {{ form.csrf_token }}
+    <p>
+        <span style="color: red;">*</span>
+        {{form.email.label}}<br>
+        {{form.email(autocomplete='off',style="
+        width: 100%;
+        width:392px;  box-sizing: border-box; border: 2px; border-radius: 7px;
+        outline: none;
+
+        background-color: white;
+        opacity:0.8;
+        font-size: 17px;
+
+         background-image: url('../static/img/username.png');
+        background-size: 27px;
+
+        background-repeat: no-repeat;
+        padding: 5px 20px 5px 40px;
+        ")}}
+        <br>
+        {% for error in form.email.errors %}
+            <span style="color: red;">
+        {{error}}</span>
+            {% endfor %}
+    </p>
+    <p>
+        <span style="color: red;">*</span>
+        {{form.username.label}}<br>
+        {{form.username(autocomplete='off',style="
+        width: 100%;
+        width:392px;  box-sizing: border-box; border: 2px; border-radius: 7px;
+        outline: none;
+
+        background-color: white;
+        opacity:0.8;
+        font-size: 17px;
+
+         background-image: url('../static/img/username.png');
+        background-size: 27px;
+
+        background-repeat: no-repeat;
+        padding: 5px 20px 5px 40px;
+
+        " )}}
+        <br>
+        {% for error in form.username.errors %}
+            <span style="color: red;">
+        {{error}}</span>
+            {% endfor %}
+    </p>
+    <p>
+        <div>
+        <span style="color: red;">*</span>
+        {{form.password.label}}<br>
+        {{form.password(maxlength="20", autocomplete='off', oninput="passValidate(this)", style="
+        width: 100%;
+        width:392px;  box-sizing: border-box; border: 2px; border-radius: 7px;
+        outline: none;
+        background-color: white;
+        opacity:0.8;
+        font-size: 18px;
+        background-image: url('../static/img/password.png');
+        background-size: 27px;
+
+        background-repeat: no-repeat;
+        padding: 5px 20px 5px 40px;
+        ")}}
+        <br>
+           <div class="conceal" id='conceal'></div>
+</div>
+        {% for error in form.password.errors %}
+            <span style="color: red;">
+        {{error}}</span>
+    {% endfor %}
+    <p style="position: relative; top: 14px;">
+        <span style="color: red;">*</span>
+        {{form.password2.label}}<br>
+        {{form.password2(maxlength="20", autocomplete='off', style="
+        width: 100%;
+        width:392px;  box-sizing: border-box; border: 2px; border-radius: 7px;
+        outline: none;
+        background-color: white;
+        opacity:0.8;
+        font-size: 18px;
+         background-image: url('../static/img/password.png');
+        background-size: 27px;
+        background-repeat: no-repeat;
+        padding: 5px 20px 5px 40px;
+        ")}}
+        <br>
+
+        <div class="conceal2" id='conceal2'></div>
+<br>
+<!--    <p style="position: relative;left:1px; top: -20px;font-weight: 500;">Password containing at least two of 6-20 numbers, letters, special symbols</p>-->
+        <ul class="pwdStrength">
+            <li class="weak"></li>
+            <li class="middle"></li>
+            <li class="strong"></li>
+            <li class="result"></li>
+        </ul>
+
+
+        {% for error in form.password2.errors %}
+            <span style="color: red;">
+        {{error}}</span>
+            {% endfor %}
+    </p>
+    <br>
+    <p>{{form.submit(class="submit sub")}}</p>
+</form>
+</div>
+</body>
+
+<script>
+       var password = document.getElementById('password');
+       var anniu = document.getElementById('conceal');
+       var password2 = document.getElementById('password2');
+       var anniu2 = document.getElementById('conceal2');
+
+       anniu.addEventListener('click',function(){
+           if(password.type==='password')
+           {
+               password.setAttribute('type','text');
+               anniu.classList.add('close');
+           }else{
+            password.setAttribute('type','password');
+               anniu.classList.remove('close');
+           }
+
+       })
+       anniu2.addEventListener('click',function(){
+           if(password2.type==='password')
+           {
+               password2.setAttribute('type','text');
+               anniu2.classList.add('close');
+           }else{
+            password2.setAttribute('type','password');
+               anniu2.classList.remove('close');
+           }
+
+       })
+   </script>
+    <script type='text/javascript' src='../static/js/text.js'></script>
+
+{% endblock %}
+

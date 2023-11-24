@@ -1,0 +1,307 @@
+div.relative {
+  position: relative;
+  left: -100px;
+}
+
+div.remember {
+  position: relative;
+  left: 20px;
+}
+
+/*body {*/
+/*  background-image: url('../img/2.jpg');*/
+/*  background-size:cover*/
+/*  }*/
+
+a.forumName{
+  font-family: 'arlrdbd', 'Arial Rounded MT Bold', 'Arial', sans-serif;
+  position:relative;
+  /*z-index:9999;*/
+  /*font-style: normal;*/
+  font-weight: 450;
+  font-size: 50px;
+  top: 2px;
+  line-height: 10px;
+  left: -130px;
+/* identical to box height, or 0% */
+
+color: rgb(246, 0, 0);
+
+mix-blend-mode: multiply;
+/*border: 1px solid rgba(12, 211, 164, 0.89);*/
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@font-face {
+  font-family: 'arlrdbd';
+  src: url("../font/arlrdbd.ttf");
+}
+
+#log_one,
+div.log{
+  position: absolute;
+  left: calc(50% - 190px);
+  /*left: 800px;*/
+  top: calc(50% - 235px);
+  /*position:relative;*/
+  /*margin: auto;*/
+
+  /*!*left: 1780px;*!*/
+  /*left: -84px;*/
+
+  /*!*left: 50%;*!*/
+  /*padding: 70px 0;*/
+  /*  border: 3px solid green;*/
+  /*  text-align: center;*/
+}
+
+div.box{
+  position: absolute;
+width: 450px;
+height: 470px;
+  opacity:0.7;
+
+background: #FFFFFF;
+box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+  top: calc(50% - 270px);
+  left: calc(50% - 225px);
+
+}
+
+div.box_register{
+  position: absolute;
+width: 490px;
+height: 580px;
+  opacity:0.7;
+
+background: #FFFFFF;
+box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.25);
+  top: calc(50% - 270px);
+  left: calc(50% - 240px);
+
+}
+
+p.aaa{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+p.rem{
+  zoom: 140%;
+  font-family: 'Arial Rounded MT Bold';
+  color: rgb(50, 64, 204);
+}
+
+input.submit{
+  background-color: #3b95ff;
+
+    border: none;
+    color: white;
+    padding: 15px 152px;
+    font-family: 'Arial Rounded MT Bold';
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+  border-radius: 8px;
+}
+
+input.sub:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  }
+
+p.choose{
+      font-family: 'Arial Rounded MT Bold';
+      color: #4d4848;
+    text-align: center;
+  font-weight: 450;
+  font-size: 30px;
+  margin: -20px 33px;
+}
+
+p.choose1{
+      font-family: 'Arial Rounded MT Bold';
+      color:  #4d4848;
+    text-align: center;
+  font-weight: 450;
+  font-size: 30px;
+  margin: -20px 75px;
+}
+
+div.line p{
+  display: inline-table
+}
+
+a.back {
+    text-decoration:none;
+    color: #4d4848;
+}
+
+video.cloud {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      object-fit: cover;
+
+    }
+
+p.textOne{
+    font-family: 'Arial Rounded MT Bold', 'Arial', system-ui, 'Carattere';
+    /*font-family: "WenQuanYi Micro Hei", "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", sans-serif;*/
+    font-weight:bold;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+div.box_one{
+    position: relative;
+    width: 60%;
+    height: 25%;
+    margin-left: 20%;
+    border: 1px solid #a7ffff;
+    margin-top: 50px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+div.form-group.required.cen{
+    text-align: center;
+    color: #0d90d1;
+    border-bottom: 1px solid #979d9d;
+    margin-top: 2%;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+
+}
+
+div.flask-pagedown-preview.box_pre{
+    margin: 3% 5%;
+    /*margin-left: 5%;*/
+    /*margin-right: 5%;*/
+    /*margin-bottom: 3%;*/
+    /*margin-top: 3%;*/
+}
+
+input.but_one{
+      background-color: #3b95ff;
+}
+
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrapper {
+            width: 500px;
+            height: 200px;
+            border: 1px solid #eee;
+            margin: 100px auto;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+        .input_box{
+            width: 80%;
+            display: flex;
+            align-items: center;
+        }
+        .input_box input {
+            width: 82%;
+            height: 30px;
+            border: none;
+            outline: none;
+            border: 1px solid #D2B48C;
+            border-radius: 12px;
+            margin: 10px 0px;
+            padding-left: 15px;
+        }
+
+        .conceal{
+            position: relative;
+            margin-top: -32px;
+            right: -85%;
+            width: 30px;
+            height: 30px;
+            background-image: url(../img/e.png);
+            background-size: 100% 100%;
+            cursor: pointer;
+        }
+        .conceal.close{
+            position: relative;
+            margin-top: -34px;
+            right: 32px;
+            width: 30px;
+            height: 30px;
+            background-image: url(../img/biy.png);
+            background-size: 100% 100%;
+        }
+
+        .conceal2{
+            position: relative;
+            margin-top: -28px;
+            right: -85%;
+            width: 30px;
+            height: 30px;
+            background-image: url(../img/e.png);
+            background-size: 100% 100%;
+            cursor: pointer;
+        }
+        .conceal2.close{
+            position: relative;
+            margin-top: -28px;
+            right: 32px;
+            width: 30px;
+            height: 30px;
+            background-image: url(../img/biy.png);
+            background-size: 100% 100%;
+        }
+
+        .wrapper p {
+            width: 80%;
+            height: 60px;
+            line-height: 26px;
+            font-size: 14px;
+            color: #339999;
+        }
+
+        .pwdStrength {
+            width: 80%;
+            list-style: none;
+            height: 1px;
+            display: none;
+            flex: 1;
+        }
+
+        .weak,
+        .middle,
+        .strong {
+            height: 15px;
+            width: 125px;
+            /*border: 1px solid black;*/
+            background: rgb(238, 238, 238);
+            border-radius: 8px;
+        }
+
+        .middle {
+            border-left: 0;
+            border-right: 0;
+        }
+
+        .result {
+            width: 30px;
+            height: 15px;
+            font-size: 14px;
+            line-height: 14px;
+            text-align: center;
+            margin-left: 10px;
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+
+        }
+

@@ -1,0 +1,113 @@
+<!--<!DOCTYPE html>-->
+
+{% extends "bootstrap/base.html" %}
+{% block content %}
+<style>
+    body{
+        background-position: center 0;
+        background-repeat: no-repeat;
+        background-image: url('../static/img/8.jpg');
+        /*background-size: 100%;*/
+        background-attachment:fixed;
+        background-size: cover;
+        -webkit-background-size: cover;/* 兼容Webkit内核浏览器如Chrome和Safari */
+        -o-background-size: cover;/* 兼容Opera */
+        zoom: 1;
+
+    }
+</style>
+<head>
+    {% import "bootstrap/wtf.html" as wtf %}
+
+    <link rel="stylesheet" href="../static/css/text.css" type="text/css">
+<!--    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="../static/css_userinfo/userinfo.css" type="text/css">
+
+    <title>Login WeTalk</title>
+
+</head>
+
+<body>
+
+<div class="contain flash" >
+	{% for message in get_flashed_messages() %}
+	<div class="alert alert-info">
+    <button type="button" class="closeU xxx" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">Close</span>
+  </button>
+{{ message }}
+</div>
+{% endfor %}
+	</div>
+<!--<video src="../static/img/beauty.mp4" class="cloud" autoplay loop muted></video>-->
+
+<!--background-color: white;-->
+<!--        opacity:0.1-->
+<div class="box"></div>
+
+
+<div id="log_one" class="log">
+    <div class="line">
+        <p class="choose"><a class="back" href="{{url_for('auth.login')}}"><u>Login</u></a></p>
+        <p class="choose1"><a class="back" href="{{url_for('auth.register')}}" >Register</a></p>
+        </div>
+    <br>
+<form action="" method="post" novalidate>
+    {{ form.csrf_token }}
+    <p>
+        <span style="color: red;">*</span>
+        {{form.email.label('Email: ')}}
+        <br>
+        {{form.email(autocomplete='off', style="
+        width: 100%;
+        width:380px;  box-sizing: border-box; border: 2px; border-radius: 7px;
+        outline: none;
+
+        background-color: white;
+        opacity:0.8;
+        font-size: 18px;
+
+         background-image: url('../static/img/username.png');
+        background-size: 34px;
+
+        background-repeat: no-repeat;
+        padding: 10px 20px 10px 40px;
+        " )}}
+        <br>
+        {% for error in form.email.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+    </p>
+    <p>
+        <span style="color: red;">*</span>
+        {{form.password.label('Password: ')}}
+        <br>
+        {{form.password(style="
+        width: 100%;
+        width:380px;  box-sizing: border-box; border: 2px; border-radius: 7px;
+        outline: none;
+        background-color: white;
+        opacity:0.8;
+        font-size: 18px;
+         background-image: url('../static/img/password.png');
+        background-size: 34px;
+
+        background-repeat: no-repeat;
+        padding: 10px 20px 10px 40px;
+        " )}}
+        <br>
+        {% for error in form.password.errors %}
+            <span style="color: red;">
+        {{error}}</span>
+            {% endfor %}
+    </p>
+
+    <p class="rem">{{form.remember_me()}}{{form.remember_me.label}}
+    </p>
+    <p >{{form.submit(class="submit sub")}}</p>
+</form>
+</div>
+</body>
+<script type='text/javascript' src='../static/js/text.js'></script>
+
+{% endblock %}

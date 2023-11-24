@@ -1,0 +1,103 @@
+<!--<!DOCTYPE html>-->
+{% extends "bootstrap/base.html" %}
+{% block content %}
+<html lang="zh-CN">
+<style>
+    body{
+        background-position: center 0;
+        background-repeat: no-repeat;
+        background-image: url('../static/img/hi.jpg');
+        /*background-size: 100%;*/
+        background-attachment:fixed;
+        background-size: cover;
+        -webkit-background-size: cover;/* 兼容Webkit内核浏览器如Chrome和Safari */
+        -o-background-size: cover;/* 兼容Opera */
+        zoom: 1;
+
+        /*对8*/
+        /*background-size: 104%;*/
+    }
+</style>
+	<head>
+		<meta charset="utf-8" />
+		<title>MySpace</title>
+		    {% import "bootstrap/wtf.html" as wtf %}
+<!--		<link rel="stylesheet" href="../static/css_b/bootstrap_lib.css" type="text/css"/>-->
+<link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+		<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../static/css_userinfo/font-awesome.css" type="text/css"/>
+        <link rel="shortcut icon" href="../static/img/logo.jpeg" />
+        <link rel="stylesheet" href="../static/css_userinfo/admin.css" type="text/css">
+		<link rel="shortcut icon" href="../static/img/logo.jpeg" />
+		<link rel='stylesheet' id='main-css-css' href='../static/css_b/main_index.css' type='text/css' media='all' />
+		<link rel="stylesheet" href="../static/css/homepage.css" type="text/css">
+		<link rel="stylesheet" href="../static/css/announcement.css" type="text/css">
+		<script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+		<script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-gl.min.js"></script>
+		<script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
+	</head>
+	<body>
+	 <div>
+        {% include 'base.html' %}
+    </div>
+
+	 <div class="contain flash" >
+	{% for message in get_flashed_messages() %}
+	<div class="alert alert-info">
+    <button type="button" class="closeU xxx" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">Close</span>
+  </button>
+
+		<strong>{{ message }}</strong>
+</div>
+{% endfor %}
+	</div>
+
+
+		<div class="navbar">
+			<input type="checkbox" id="checkbox" />
+			<label for="checkbox">
+				<i class="fa fa-toggle-right"></i>
+			</label>
+			<ul>
+				<li>
+					<img src="{{ user.real_avatar }}" >
+					<span>{{ user.username }}</span>
+				</li>
+				<li>
+					<a href="{{url_for('.administrator')}}">
+						<i class="fa fa-cubes"></i>
+						<span>Category Bar3D</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{url_for('.administrator3')}}">
+						<i class="fa fa-sun-o" aria-hidden="true"></i>
+						<span>Heat and PostAmount</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{url_for('.administrator2')}}">
+						<i class="fa fa-map-marker" aria-hidden="true"></i>
+						<span>Birthplace Distribution</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+	 <div id="bar" className="chart-container" style="left:350px;width:990px; height:570px;"></div>
+
+
+	 <script>
+		 var chart_Bar = echarts.init(
+				 document.getElementById('bar'), 'white', {renderer: 'canvas'});
+		 var option_Bar = {{ Bar_options | safe }};
+
+		 chart_Bar.setOption(option_Bar);
+	 </script>
+
+
+	</body>
+</html>
+{% endblock %}

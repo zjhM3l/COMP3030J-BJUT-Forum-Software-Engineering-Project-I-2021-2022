@@ -1,0 +1,251 @@
+<!--<!DOCTYPE html>-->
+{% extends "bootstrap/base.html" %}
+{% block content %}
+<html lang="zh-CN">
+<style>
+    body{
+        background-position: center 0;
+        background-repeat: no-repeat;
+        background-image: url('../static/img/hi.jpg');
+        /*background-size: 100%;*/
+        background-attachment:fixed;
+        background-size: cover;
+        -webkit-background-size: cover;/* 兼容Webkit内核浏览器如Chrome和Safari */
+        -o-background-size: cover;/* 兼容Opera */
+        zoom: 1;
+
+        /*对8*/
+        /*background-size: 104%;*/
+    }
+</style>
+	<head>
+		<meta charset="utf-8" />
+		<title>MySpace</title>
+		    {% import "bootstrap/wtf.html" as wtf %}
+<!--		<link rel="stylesheet" href="../static/css_b/bootstrap_lib.css" type="text/css"/>-->
+<link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+		<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../static/css_userinfo/font-awesome.css" type="text/css"/>
+        <link rel="shortcut icon" href="../static/img/logo.jpeg" />
+        <link rel="stylesheet" href="../static/css_userinfo/userinfo.css" type="text/css">
+	</head>
+	<body>
+	 <div>
+        {% include 'base.html' %}
+    </div>
+
+	 <div class="contain flash" >
+	{% for message in get_flashed_messages() %}
+	<div class="alert alert-info">
+    <button type="button" class="closeU xxx" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">Close</span>
+  </button>
+
+		<strong>{{ message }}</strong>
+</div>
+{% endfor %}
+	</div>
+
+
+		<div class="sidebar">
+			<input type="checkbox" id="checkbox" />
+			<label for="checkbox">
+				<i class="fa fa-toggle-right"></i>
+			</label>
+			<ul>
+				<li>
+
+					<img src="{{ user.real_avatar }}" />
+					<span>{{ user.username }}</span>
+
+				</li>
+				<li>
+					<a href="#top">
+						<i class="fa fa-id-card-o" aria-hidden="true"></i>
+						<span>Profile</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{ url_for('.followers', username=form.username.data ) }}">
+						<i class="fa fa-toggle-off" aria-hidden="true"></i>
+						<span>Followers</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{ url_for('.followed_by', username=form.username.data ) }}">
+						<i class="fa fa-toggle-on" aria-hidden="true"></i>
+						<span>Following</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{ url_for('.user', username=form.username.data ) }}">
+						<i class="fa fa-keyboard-o"></i>
+						<span>My Posts</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{url_for('.ucomments', username=form.username.data ) }}">
+						<i class="fa fa-reply" aria-hidden="true"></i>
+						<span>My Reply</span>
+					</a>
+				</li>
+
+                <li>
+					<a href="{{url_for('auth.logout')}}">
+						<i class="fa fa-sign-out" aria-hidden="true"></i>
+						<span>Sign out</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+
+
+<form action="" method="post" class="form" enctype="multipart/form-data" role="aform">
+
+<div class="form-group "><label class="control-label" for="avatar"></label>
+        			{{ form.csrf_token }}
+
+<!--             <label for="avatar" type="image">Choose images to upload (PNG, JPG)</label>-->
+
+<!--          <input id="avatar" class="hh" name="avatar" type="file">-->
+	<input id="avatar" type="file" name="avatar" style=" opacity: 0; background-color: white; position: absolute; margin-left: 25%; margin-right: 75%; margin-top: 120px; width: 160px;height:160px; overflow:hidden;z-index: 990" />
+
+
+  </div>
+
+    <input class="saveBtn" id="submit" name="submit" type="submit" value="Save Avatar">
+
+</form>
+	 <!-- templates/user.html -->
+{% if user == current_user or current_user.is_administrator() %}
+
+    <img class="avatar profile-thumbnail" src="{{ user.real_avatar }}" >
+<!--如下是初始背景图-->
+	 <img class="avatar profile-thumbnail" src="../static/img/one.jpeg" style="z-index: -10000" >
+
+    {% endif %}
+    </a>
+
+
+	 <form action="" method="post" novalidate>
+		<div class="user">
+			{{ form.csrf_token }}
+
+    <p>
+         <i class="fa fa-user-secret" style=" font-size: 18px"></i>
+        <span style="font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif; font-size: 18px">Username</span><br>
+<!--		{{form.username.label}}<br>-->
+        {{form.username(style="
+        width: 100%;
+		height:40px;
+        width:460px;
+		box-sizing: border-box;
+		border:4px solid #1f6377;
+		border-radius: 7px;
+        outline: none;
+        background-color: white;
+<!--        opacity:0.8;-->
+        font-size: 20px;
+<!--         background-image: url('../static/img/password.png');-->
+        background-size: 27px;
+
+        background-repeat: no-repeat;
+        padding: 5px 20px 5px 40px;
+        ")}}
+        <br>
+    </p>
+
+    <p>
+		<i class="fa fa-id-badge" style=" font-size: 18px"></i>
+        <span style="font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif; font-size: 18px">Real Name</span><br>
+        {{form.name(style="
+        width: 100%;
+		height:40px;
+        width:460px;
+		box-sizing: border-box;
+		border:4px solid #1f6377;
+		border-radius: 7px;
+        outline: none;
+        background-color: white;
+<!--        opacity:0.8;-->
+        font-size: 20px;
+<!--         background-image: url('../static/img/password.png');-->
+        background-size: 27px;
+
+        background-repeat: no-repeat;
+        padding: 5px 20px 5px 40px;
+        ")}}
+    </p>
+	<p>
+        <i class="fa fa-home" style=" font-size: 18px"></i>
+		<span style="font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif; font-size: 18px">Birthplace</span><br>
+		{{form.institute(style="
+        width: 100%;
+		height:40px;
+        width:460px;
+		box-sizing: border-box;
+		border:4px solid #1f6377;
+		border-radius: 7px;
+        outline: none;
+        background-color: white;
+<!--        opacity:0.8;-->
+        font-size: 20px;
+<!--         background-image: url('../static/img/password.png');-->
+        background-size: 27px;
+
+        background-repeat: no-repeat;
+        padding: 5px 20px 5px 40px;
+        ")}}
+    </p>
+    <p>
+        <i class="fa fa-birthday-cake" aria-hidden="true" style=" font-size: 18px"></i>
+		<span style="font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif; font-size: 18px">Birthday</span><br>
+        {{form.birthday(style="
+        width: 100%;
+		height:40px;
+        width:460px;
+		box-sizing: border-box;
+		border:4px solid #1f6377;
+		border-radius: 7px;
+        outline: none;
+        background-color: white;
+<!--        opacity:0.8;-->
+        font-size: 20px;
+<!--         background-image: url('../static/img/password.png');-->
+        background-size: 27px;
+
+        background-repeat: no-repeat;
+        padding: 5px 20px 5px 40px;
+        ")}}
+    </p>
+    <p>
+        <i class="fa fa-pencil" aria-hidden="true" style=" font-size: 18px"></i>
+		<span style="font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif; font-size: 18px">About me</span><br>
+        {{form.about_me(style="
+        width: 100%;
+		height:260px;
+        width:460px;
+		box-sizing: border-box;
+		border:4px solid #1f6377;
+		border-radius: 7px;
+        outline: none;
+        background-color: white;
+<!--        opacity:0.8;-->
+        font-size: 20px;
+<!--         background-image: url('../static/img/password.png');-->
+        background-size: 27px;
+
+        background-repeat: no-repeat;
+        padding: 5px 20px 5px 40px;
+        ")}}
+    </p>
+
+	<p>{{form.submit(class="Submit a")}}</p>
+
+		</div>
+</form>
+	</body>
+</html>
+{% endblock %}

@@ -1,0 +1,205 @@
+div.pic {
+  background-image: url("../img/hi.jpg");
+  background-size: 100%;
+  min-height: 249px;
+  height: auto !important;
+  height: 249px;
+}
+
+label.tit_font{
+  font-family: 'Playball', cursive;
+  font-size: 33px;
+  font-weight: 80;
+}
+
+p.font {
+  font-family: 'Playball', cursive;
+  font-size: 65px;
+  line-height: 28px;
+  color: #131313;
+  text-align: center;
+  position: relative;
+  top: 70px;
+}
+  @font-face {
+    font-family: 'Playball';
+    src: url("../font/Playball-Regular.ttf");
+  }
+
+div.boxLF{
+  position: absolute;
+  width: 69%;
+  left: 15%;
+  top: 380px;
+  /*height: 16%;*/
+  border: 1px solid rgba(250, 250, 250, 0.67);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #fff;
+}
+
+input.lInput{
+  outline: none;
+  border:0;
+  border-bottom: 2px solid #7e7e7e;
+  width: 60%;
+  font-size: 15px;
+}
+
+label.lPostFont{
+  font-family: 'arlrdbd', 'Arial', sans-serif;
+  font-size: 15px;
+}
+
+input.lInputOne{
+  outline: none;
+  border:0;
+  border-bottom: 2px solid #7e7e7e;
+  width: 60%;
+  font-size: 15px;
+}
+
+form.lForm{
+  position: relative;
+  margin-left: 25%;
+  margin-top: 35px;
+}
+
+textarea.postTwo.lNew{
+  height: 100px;
+}
+
+img.photo{
+	position: absolute;
+	margin-left: 100px;
+	margin-top: 20px;
+	height: 140px;
+	width: 140px;
+	border-radius: 6px;
+}
+
+p.lOne{
+  position: relative;
+  margin-left: 140px;
+  top: 25px;
+  font-family: 'arlrdbd', sans-serif;
+  font-size: 23px;
+}
+
+@font-face {
+  font-family: 'arlrdbd';
+  src: url("../font/arlrdbd.ttf");
+}
+
+p.lInfo{
+  position: relative;
+  font-family: 'arlrdbd', sans-serif;
+  font-size: 21px;
+  margin-left: 910px;
+  margin-top: -40px;
+}
+
+p.lInfo.name{
+  position: relative;
+  font-family: 'arlrdbd', sans-serif;
+  font-size: 21px;
+  margin-left: 780px;
+  margin-top: 12px;
+}
+
+p.details{
+  position: absolute;
+  font-family: 'arlrdbd', sans-serif;
+  font-size: 21px;
+  /*margin-left: 280px;*/
+    margin-left: 330px;
+  margin-top: 25px;
+  width: 380px;
+  word-wrap:break-word;
+  word-break:break-all;
+  overflow: hidden;
+}
+
+p.details.name{
+  position: relative;
+  font-family: 'arlrdbd', sans-serif;
+  font-size: 21px;
+  margin-left: 350px;
+  margin-top: -15px;
+}
+
+p.line{
+  position: relative;
+  margin-top: 30px;
+  border-bottom: 2px solid #cfd4d9;
+}
+
+p.leftLine{
+  border-left: 2px solid #cfd4d9;
+}
+
+img.addPic{
+  height: 60px;
+  width: 60px;
+  position: absolute;
+  margin-left: 650px;
+  margin-top: -95px;
+}
+
+input.lBtn{
+  position: relative;
+  margin-top: -18px;
+  background-color: #2081fc;
+  border: none;
+  color: white;
+  padding: 13px 260px;
+  font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border-radius: 3px;
+  z-index: 1000;
+}
+
+input.lBtn:hover {
+  background-color: #046ee1;
+}
+
+span.new{
+  position: absolute;
+  margin-top: 50px;
+  /*margin-top: calc(100% + 50px);*/
+  height: 20px;
+}
+
+div.boxLFRight{
+  position: absolute;
+  margin-top: 150px;
+  right: 80px;
+  width: 400px;
+  height: 400px;
+  top: 380px;
+  /*height: 16%;*/
+  border: 1px solid rgba(250, 250, 250, 0.67);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #fff;
+  z-index: 100;
+}
+
+form.search-form.clearfix.laf{
+  position: relative;
+  margin-top: -80px;
+}
+
+input.search-term.required.laf{
+  width: 1000px;
+}
+
+div.pagination.alf{
+  position: absolute;
+  margin-top: -20px;
+  margin-left: 84%;
+}

@@ -1,0 +1,93 @@
+
+<head>
+
+                <!-- META TAGS -->
+                <meta charset="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+                <title>BJUT Forum</title>
+
+                <link rel="shortcut icon" href="../static/img/logo.jpeg" />
+
+                <link rel='stylesheet' id='bootstrap-css-css'  href={{url_for("static", filename="css_b/bootstrap_lib.css")}} type='text/css' media='all' />
+
+                <link rel='stylesheet' id='responsive-css-css' href='../static/css_b/responsive.css' type='text/css' media='all' />
+                <link rel='stylesheet' id='pretty-photo-css-css' href='../static/js_b/prettyphoto/prettyPhotoaeb9.css?ver=3.1.4' type='text/css' media='all' />
+                <link rel='stylesheet' id='main-css-css' href='../static/css_b/main_index.css' type='text/css' media='all' />
+                <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+                <script src="../static/js_b/jquery-1.8.3.min.js"></script>
+                <link rel="stylesheet" href="../static/css/text.css" type="text/css">
+
+        </head>
+
+<!--This class is used to change colors-->
+<div class="header-wrapper">
+                        <header>
+                                <div class="container">
+                                        <div class="logo-container">
+                                                <span class="tag-line">
+                                                        <a class="forumName" href="{{url_for('main.index')}}">WeTalk</a>
+                                                </span>
+                                        </div>
+
+
+                                        <!--Start of Main Navigation-->
+                                        <nav class="main-nav">
+                                                <div class="menu-top-menu-container">
+                                                        <ul id="menu-top-menu" class="clearfix">
+                                                            <li ><a href="{{url_for('main.index')}}"><font size="4" color="#ffffff"><b>Home</b></font></a></li>
+<!--                                                            <li><button type="button" class="btn btn-primary" ><a href="{{url_for('main.index')}}">Home</a></button></li>-->
+
+                                                            {% if current_user.is_authenticated %}
+                                                                <li><a href="{{url_for('main.edit_profile')}}"><font size="4" color="#ffffff">Hi, {{ current_user.username }}</font></a>
+                                                                            <ul class="sub-menu">
+                                                                                    <li><a href="{{url_for('auth.logout')}}"><font color="#ffffff">Logout</font></a>
+                                                                                    <li><a href="{{url_for('main.edit_profile')}}"><font color="#ffffff">Account</font></a></li>
+                                                                            </ul>
+                                                                </li>
+                                                            {% else %}
+                                                                <li><a href="{{url_for('auth.login')}}"><font size="4" color="#ffffff">Login</font></a>
+                                                                            <ul class="sub-menu">
+                                                                                <li><a href="{{url_for('auth.register')}}"><font color="#ffffff">Register</font></a></li>
+                                                                                <li><a href="{{url_for('main.edit_profile')}}"><font color="#ffffff">Account</font></a></li>
+                                                                            </ul>
+                                                                </li>
+                                                            {% endif %}
+
+                                                                <li><a href="#"><font size="4" color="#ffffff">More</font></a>
+                                                                        <ul class="sub-menu">
+                                                                            <li><a href="{{url_for('main.lindex')}}"><font color="#ffffff">Lost and Found</font></a></li>
+                                                                            <li><a href="#"><font color="#ffffff">Transaction Platform</font></a></li>
+                                                                            <li><a href="#"><font color="#ffffff">Contact us</font></a></li>
+                                                                        </ul>
+                                                                </li>
+                                                                </li><a href="{{url_for('main.announcement')}}"><font size="4" color="#ffffff">Announcement</font></a>
+                                                                            <ul class="sub-menu">
+                                                                                <li><a href="{{url_for('main.announcement')}}"><font color="#ffffff">Announcement</font></a></li>
+                                                                            </ul>
+                                                                </li>
+
+                                                            {% if current_user.role_id == 3 %}
+                                                             <li><a href="{{url_for('main.administrator')}}"><font size="4" color="#ffffff"> Administrator</font></a>
+                                                                    <ul class="sub-menu">
+                                                                            <li><a href="{{url_for('main.administrator')}}"><font color="#ffffff"> Administrator</font></a></li>
+                                                                    </ul>
+                                                            </li>
+                                                            {% endif %}
+                                                        </ul>
+                                                </div>
+                                        </nav>
+                                        <!-- End of Main Navigation -->
+                                </div>
+                        </header>
+                </div>
+<script type='text/javascript' src='../static/js_b/jquery-1.8.3.min.js/'></script>
+                <script type='text/javascript' src='../static/js_b/jquery-1.8.3.min.js'></script>
+                <script type='text/javascript' src='../static/js_b/prettyphoto/jquery.prettyPhoto.js'></script>
+                <script type='text/javascript' src='../static/js_b/jflickrfeed.js'></script>
+				<script type='text/javascript' src='../static/js_b/jquery.liveSearch.js'></script>
+                <script type='text/javascript' src='../static/js_b/jquery.form.js'></script>
+                <script type='text/javascript' src='../static/js_b/jquery.validate.min.js'></script>
+                <script type='text/javascript' src='../static/js_b/custom.js'></script>
+                <script type='text/javascript' src='../static/js/text.js'></script>

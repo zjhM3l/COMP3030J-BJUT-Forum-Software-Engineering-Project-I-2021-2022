@@ -1,0 +1,69 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+<link rel="stylesheet" href="../static/css/text.css" type="text/css">
+<link rel="stylesheet" href="../static/css/homepage.css" type="text/css">
+
+<div>
+    {% include 'base.html' %}
+</div>
+
+{% import "bootstrap/wtf.html" as wtf %}
+{% block page_content %}
+<div class="page-header">
+    <p class="textOne"><font size="7" >Edit Your Post</font></p>
+</div>
+
+<form action="" method="post"  class="form" role="form">
+      {{ form.csrf_token }}
+
+    <div class="form-group  required"><label class="control-label" for="title"><font size="5">Change your title here:</font></label>
+
+          <textarea class="form-control" id="title" name="title" required>{{ form.title.data }}</textarea>
+
+  </div>
+
+    <label style="font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif; font-size: 19px" for="lang">Category</label>
+                <select style="outline: none" name="category_id" id="lang">
+                    <option value="1">Entertainment</option>
+                    <option value="2">Science and Technology</option>
+                    <option value="3">Movie</option>
+                    <option value="4">Teleplay</option>
+                    <option value="5">Games</option>
+                    <option value="6">Sports</option>
+                    <option value="7">Knowledge</option>
+                    <option value="8">News</option>
+                    <option value="9">Daily Life</option>
+                    <option value="10">Fashion</option>
+                    <option value="11">Lost and Found</option>
+                    <option value="12">Second Hand Transactions</option>
+                    <option value="13">BJUT</option>
+                </select>
+
+    <div class="form-group  required"><label class="control-label" for="flask-pagedown-body" ><font size="5">Change your post here:</font></label>
+
+<!--          <textarea class="form-control" id="body" name="body" required>{{ form.body.data }}</textarea>-->
+
+
+    <div class="flask-pagedown"><textarea class="form-control flask-pagedown-input tableSize" id="flask-pagedown-body" name="body" required>{{ form.body.data }}</textarea></div>
+        <br>
+            <input class="submit_one sub_one" id="submit" name="submit" type="submit" value="Submit">
+        <div class="box_one">
+            <div class="form-group required cen"><label class="control-label"><font size="5">Preview your new post:</font></label></div>
+            <div class="flask-pagedown-preview box_pre" id="flask-pagedown-body-preview"></div>
+
+
+        </div>
+
+<!--    <input class="btn btn-default" id="submit" name="submit" type="submit" value="Submit">-->
+    </div>
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ pagedown.include_pagedown() }}
+{% endblock %}
+{% endblock %}

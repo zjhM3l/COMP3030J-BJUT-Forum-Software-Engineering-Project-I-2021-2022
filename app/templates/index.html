@@ -1,0 +1,322 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+{% block content %}
+
+
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>BJUT Forum</title>
+
+            <link rel="shortcut icon" href="../static/img/logo.jpeg" />
+            <link rel='stylesheet' id='main-css-css' href='../static/css_b/main_index.css' type='text/css' media='all' />
+            <link rel="stylesheet" href="../static/css/post.css" type="text/css">
+            <link rel="stylesheet" href="../static/css/homepage.css" type="text/css">
+            <script src="/static/js_echarts/echarts.min.js"></script>
+            <script type="text/javascript" src="/static/js_echarts/jquery.min.js"></script>
+            <script type="text/javascript" src="/static/js_echarts/echarts-wordcloud.js"></script>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-liquidfill.min.js"></script>
+            <script type="text/javascript" src="/static/js_echarts/jquery-2.1.4.min.js"></script>
+        </head>
+
+        <body>
+
+        <div>
+        {% include 'base.html' %}
+        </div>
+
+
+        <div class="contain flash" >
+	{% for message in get_flashed_messages() %}
+	<div class="alert alert-info">
+    <button type="button" class="closeU xxx" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">Close</span>
+  </button>
+
+        <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+	</div>
+
+
+ 		<!-- Start of Search Wrapper -->
+                <div class="search-area-wrapper">
+                        <div class="search-area container">
+                                <h3 class="search-header">Forum of Beijing University of Technology</h3>
+                                <p class="search-tag-line">Persistent Pursuit of Truth as Aim, Persistent Innovation as Way</p>
+
+<!--                                <form id="search-form" class="search-form clearfix" method="get" action="#" autocomplete="off">-->
+
+
+                             <form action=""  class="search-form clearfix" method="post" novalidate autocomplete="off">
+                                 {{ form.csrf_token }}
+
+                            <input id="text" class="search-term required" type="text" name="text" placeholder="Search whatever you want" title="Please enter a search term">
+
+                                <button class="searchBtn" name="submit" type="submit" ><span>Search</span></button>
+                                 <div id="search-error-container"></div>
+                            </form>
+
+<!--                                <form id="search-form" class="search-form clearfix" method="get"  autocomplete="off">-->
+
+<!--                                        <input class="search-term required" type="text" id="s" name="s" placeholder="Type your search terms here" title="* Please enter a search term!" />-->
+<!--                                        <input class="search-btn" type="submit" value="Search" />-->
+<!--                                        <div id="search-error-container"></div>-->
+<!--                                </form>-->
+                        </div>
+                </div>
+                <!-- End of Search Wrapper -->
+
+
+                <!-- Start of Page Container -->
+<select onchange="location.href = this.options[this.selectedIndex].value" name="category" style="outline: none" class="selectPosition">
+<!--            <option selected>Category</option>-->
+            <option value="none" selected disabled hidden>Category</option>
+            <option value="{{ url_for('main.index') }}"> Show All </option>
+
+        {% for category in categories %}
+                    {% if category_id != category.id %}
+    <option value="{{ url_for('main.index', category_id=category.id, st=current_sort ) }}">{{ category.name }}</option>
+
+<!--    <option value="{{ url_for('main.index', category_id=category.id, st=current_sort ) }}">{{ category.name }}</option>-->
+                    {% endif %}
+                {% endfor %}
+ </select>
+<!--        <input class="su" name="submit" type="submit" value="Might Like">-->
+        <form action="" method="post" class="newForm" role="liform">
+            {{ form.csrf_token }}
+            <input class="btn btn-default new" name="submit" type="submit" value="Show Interests">
+        </form>
+
+    <div id="liquid" class="chart-container" style="float:right; width:400px; height:400px;"></div>
+
+
+	<div class="page-container">
+                        <div class="container">
+                                <div class="row">
+
+                                        <!-- start of page content -->
+                                        <div class="span8 page-content">
+
+                                            <div class="page-section" id="projects_New">
+                    <div class="row">
+
+                        <ul class="nav nav-tabs">
+                            <li  class="{% if not show_followed %}active{% endif %}" >
+
+                                <a href="{{ url_for('.show_all') }}">All</a>
+
+                            </li>
+                            {% if current_user.is_authenticated %}
+                            <li  class="{% if show_followed %}active{% endif %}">
+
+                                <a href="{{ url_for('.show_followed') }}">Followed</a>
+                            </li>
+                                {% endif %}
+                        </ul>
+
+						<ul class="posts">
+						{% for post in posts %}
+						<div class="col-md-12 main-listing">
+							<article class="format-standard type-post hentry clearfix">
+								<header class="clearfix">
+									<h3 class="post-title">
+										<a href="{{ url_for('.post', id=post.id) }}">{{ post.title }}</a>
+									</h3>
+									<div class="post-meta clearfix">
+                                        <span class="tag">
+                                                {{post.categories}}
+                                            </span>
+											<span class="date">
+                                                {{post.moment}}
+                                            </span>
+											<span class="category">
+												<a href="{{ url_for('.user', username=post.author.username) }}">{{ post.author.username }}</a>
+											</span>
+                                        <span class="Nless">
+                                            Key words:
+                                        </span>
+                                        <span class="less">
+                                            {{post.keyA}}
+                                            {{post.keyB}}
+                                            {{post.keyC}}
+                                            {{post.keyD}}
+                                            {{post.keyE}}
+                                        </span>
+                                        <label class="count">Page View: {{ post.read_count }}</label>
+									</div><!-- end of post meta -->
+								</header>
+                                <div>
+                                    <input type="checkbox" id='exp' style="opacity: 0; position:absolute; left: 657px; top: 107px; width: 83px; height: 38px;z-index: 1000">
+								<div class="post-body">
+                                    <label class="btn" for='exp'></label>
+                                     {% if post.body_html %}
+                                        {{ post.body_html | safe }}
+                                    {% else %}
+                                        {{ post.body }}
+                                    {% endif %}
+                                </div>
+                                </div>
+							</article>
+
+						</div>
+
+						{% endfor %}
+						</ul>
+
+					</div>
+
+                                                <div class="pagination">
+                                                    {{ macros.pagination_widget(pagination, '.index') }}
+                                                </div>
+
+											</div>
+										</div>
+								</div>
+						</div>
+
+	</div>
+
+
+
+        <span id="Cloud" class="chartOne" style="float:left; width:400px; height:500px;"></span>
+		<span id="keyCloud" class="chartTwo"></span>
+
+        <form action="" method="post" class="formOne" role="form">
+            {{ form.csrf_token }}
+
+			<div class="postOne" style="float:none;"><label class="postThree" for="body"><font size="5" >Post whatever you want:</font></label>
+                            <br>
+                <br>
+<!--        <input style="border:0;border-bottom:1px solid black;">-->
+                <label style="font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif; font-size: 19px" for="lang">Category</label>
+                <select style="outline: none" name="category_id" id="lang">
+                    <option value="1">Entertainment</option>
+                    <option value="2">Science and Technology</option>
+                    <option value="3">Movie</option>
+                    <option value="4">Teleplay</option>
+                    <option value="5">Games</option>
+                    <option value="6">Sports</option>
+                    <option value="7">Knowledge</option>
+                    <option value="8">News</option>
+                    <option value="9">Daily Life</option>
+                    <option value="10">Fashion</option>
+                    <option value="11">Lost and Found</option>
+                    <option value="12">Second Hand Transactions</option>
+                    <option value="13">BJUT</option>
+                    <option value="14">Others</option>
+                </select>
+                <br>
+                <br>
+<!--                <input class="postThree" name="category_id" placeholder="category_id" required/>-->
+
+                <input class="postThree" name="title" placeholder="Subject" required/>
+                <br>
+                <br>
+                <textarea class="postTwo" id="body" name="body" placeholder="Post whatever you want" required></textarea>
+
+            </div>
+<br>
+			<br>
+    <input class="submit_one sub_one" id="submit" name="submit" type="submit" value="Submit">
+
+                        </div>
+
+
+
+</form>
+
+
+        <!-- Start of Footer -->
+                <footer id="footer-wrapper">
+                        <div id="footer" class="container">
+                                <div class="row">
+
+                                        <div class="span3">
+                                                <section class="widget">
+                                                        <h3 class="title">About Us</h3>
+                                                        <div class="textwidget">
+                                                            <p>We decided to make a web forum mainly face to BJUT students. Students can publish new posts on the forum and interact with other posts. </p>
+                                                            <p> The forum will also be divided into several sections for students to access specific content as well as for administrators to manage it effectively.</p>
+                                                        </div>
+                                                </section>
+                                        </div>
+
+                                        <div class="span3">
+                                                <section class="widget"><h3 class="title">Categories</h3>
+                                                        <ul>
+                                                                <li><a href="#">Account</a> </li>
+                                                                <li><a href="#">Posts</a></li>
+                                                                <li><a href="#">Commons</a></li>
+                                                                <li><a href="#" >Parties</a></li>
+                                                                <li><a href="#">New Posts</a></li>
+                                                                <li><a href="#">Privacy</a></li>
+                                                        </ul>
+                                                </section>
+                                        </div>
+
+                                        <div class="span3">
+                                                <section class="widget">
+                                                        <h3 class="title">Privacy</h3>
+                                                        <div id="twitter_update_list">
+                                                                <ul>
+                                                                        <li>If you want to know more about our privacy, please click <a href="#">here</a>.</li>
+                                                                </ul>
+                                                        </div>
+
+                                                </section>
+                                        </div>
+
+                                    <div class="span3">
+                                                <section class="widget">
+                                                        <h3 class="title">Contact Us</h3>
+                                                </section>
+                                        </div>
+
+                                </div>
+                        </div>
+                        <!-- end of #footer -->
+
+                        <!-- Footer Bottom -->
+                        <div id="footer-bottom-wrapper">
+                                <div id="footer-bottom" class="container">
+                                        <div class="row">
+                                                <div class="span6">
+                                                <p class="copyright"><strong> Copyright © Group 1 Project- BJUT Student Forum</strong> All rights reserved.</p>
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+                        <!-- End of Footer Bottom -->
+
+                </footer>
+                <!-- End of Footer -->
+
+
+                <a href="#top" id="scroll-top"></a>
+
+    <script>
+        var chart_liquid = echarts.init(
+            document.getElementById('liquid'), 'white', {renderer: 'canvas'});
+
+        var option_liquid =  {{ Ball_options | safe }};
+
+        chart_liquid.setOption(option_liquid);
+    </script>
+         <script>
+        var chart_Cloud = echarts.init(
+            document.getElementById('Cloud'), 'white', {renderer: 'canvas'});
+        var option_Cloud = {{ Cloud_options | safe }}
+
+        chart_Cloud.setOption(option_Cloud);
+    </script>
+        <script>
+        var chart_keyCloud = echarts.init(
+            document.getElementById('keyCloud'), 'white', {renderer: 'canvas'});
+        var option_keyCloud = {{ KeyWordCloud_options | safe }}
+
+        chart_keyCloud.setOption(option_keyCloud);
+    </script>
+        </body>
+{% endblock %}

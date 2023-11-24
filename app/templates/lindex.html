@@ -1,0 +1,117 @@
+{% extends "bootstrap/base.html" %}
+{% block content %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>BJUT Forum</title>
+            <link rel="shortcut icon" href="../static/img/logo.jpeg" />
+            <link rel='stylesheet' id='main-css-css' href='../static/css_b/main_index.css' type='text/css' media='all' />
+            <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="../static/css_userinfo/userinfo.css" type="text/css">
+            <link rel="stylesheet" href="../static/css/homepage.css" type="text/css">
+            <link rel="stylesheet" href="../static/css/lostAndFound.css" type="text/css">
+
+
+        </head>
+
+        <div>
+        {% include 'base.html' %}
+        </div>
+
+
+        <div class="contain flash" >
+	{% for message in get_flashed_messages() %}
+	<div class="alert alert-info">
+        <button type="button" class="closeU xxx" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">Close</span>
+        </button>
+        <strong>{{ message }}</strong>
+    </div>
+            {% endfor %}
+	</div>
+
+        <div class="pic">
+            <p class="font">Lost and Found</p>
+        </div>
+
+
+<form action=""  class="search-form clearfix laf" method="post" novalidate autocomplete="off">
+    {{ sform.csrf_token }}
+    <input id="text" class="search-term required laf" type="text" name="text" placeholder="Search whatever you want" title="Please enter a search term">
+    <button class="searchBtn" name="submit" type="submit" ><span>Search</span></button>
+    <div id="search-error-container"></div>
+</form>
+
+<!--<div class="boxLFRight">-->
+<!--    <p>放搜索与LandF的种类、图片</p>-->
+<!--</div>-->
+
+        <div class="boxLF">
+
+            {% for lpost in lposts %}
+
+            <p class="lOne">{{ lpost.title }}</p>
+            <p class="details name">Details:</p>
+            <p class="leftLine"></p>
+            <p class="details">{{ lpost.details }}</p>
+            <img class="photo" src="{{ lpost.photo }}" >
+            <img class="avatar lAvatar" src="{{ lpost.author.real_avatar }}" >
+            <p class="lInfo">{{ lpost.author.username }}</p>
+            <p class="lInfo name">Location:</p>
+            <p class="lInfo">{{ lpost.location }}</p>
+            <p class="lInfo name">Reward:</p>
+            <p class="lInfo">{{ lpost.reward }}</p>
+            <p class="lInfo name">ConTact:</p>
+            <p class="lInfo">{{ lpost.contact }}</p>
+            <p class="lInfo name">Time:</p>
+            <p class="lInfo">{{ lpost.moment }}</p>
+            <p class="line"></p>
+            {% endfor %}
+
+<div class="pagination alf">
+    {{ macros.pagination_widget(pagination, '.lindex') }}
+</div>
+
+           <form action="" method="post" class="lForm" enctype="multipart/form-data" role="lform">
+               {{ lform.csrf_token }}
+               <label class="tit_font">Post your Lost and Found:</label>
+               <p></p>
+               <br>
+               <div class="postOne"><label class="lPostFont" for="title">Title:</label>
+                   <div><input class="lInput" id="title" name="title" style="width: 600px" placeholder="Subject" required/></div>
+               </div>
+
+               <div class="postOne"><label class="lPostFont" for="lorf">lose or find:</label>
+                   <div><input class="lInputOne" id="lorf" name="lorf" style="width: 600px" placeholder="lose or find" value=""></div>
+               </div>
+
+               <div class="form-group  required"><label class="lPostFont" for="location">Location:</label>
+                   <div><input class="lInput" id="location" name="location" style="width: 600px" placeholder="Location" required value=""></div>
+               </div>
+               <div class="form-group  required"><label class="lPostFont" for="contact">Contact:</label>
+
+                   <div><input class="lInput" id="contact" name="contact" style="width: 600px" placeholder="Contact" required value=""></div>
+               </div>
+               <div class="form-group "><label class="lPostFont" for="reward">Reward:</label>
+                   <div><input class="lInput" id="reward" name="reward" style="width: 600px" placeholder="Reward" value=""></div>
+               </div>
+
+               <div class="form-group  required"><label class="lPostFont">Details:</label>
+                   <div class="flask-pagedown"><textarea class="postTwo lNew flask-pagedown-input" id="flask-pagedown-details" name="details" maxlength="150" style="width: 600px" placeholder="Enter some details" required></textarea></div>
+                   <div class="flask-pagedown-preview" id="flask-pagedown-details-preview"></div>
+
+               </div>
+               <img src="../static/img/picture.png" class="addPic">
+                <div class="form-group  required"><label class="control-label" for="photo"></label>
+                   	<input id="photo" type="file" name="photo" style=" position:absolute; margin-left: 650px; margin-top: -110px; opacity: 0; background-color: white; width: 60px;height:60px; overflow:hidden;z-index: 990" />
+               </div>
+               <input class="lBtn" id="submit" name="submit" type="submit" value="Submit">
+           </form>
+            <span class="new">.</span>
+
+        </div>
+
+
+{% endblock %}

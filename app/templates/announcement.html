@@ -1,0 +1,74 @@
+{% import "_macros.html" as macros %}
+
+				<link rel="shortcut icon" href="../static/img/logo.jpeg" />
+				<link rel='stylesheet' id='main-css-css' href='../static/css_b/main_index.css' type='text/css' media='all' />
+                <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+				<link rel="stylesheet" href="../static/css/homepage.css" type="text/css">
+				<link rel="stylesheet" href="../static/css/announcement.css" type="text/css">
+				<script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+				<script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts-gl.min.js"></script>
+                <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
+
+				 <div>
+        {% include 'base.html' %}
+        </div>
+
+  <div class="span8 page-content ann">
+
+                    <div class="rows">
+						<ul class="announcements">
+						{% for announcement in announcements %}
+						<div class="col-md-12 main-listing">
+							<article class="format-standard type-post hentry clearfix">
+								<header class="clearfix">
+									<h3 class="announcement-title">
+										<i class="fa fa-bullhorn" aria-hidden="true"></i>
+										<a href="{{ url_for('.announcement', id=announcement.id) }}">{{ announcement.title }}</a>
+									</h3>
+									<div class="post-meta clearfix">
+											<span class="date">
+                                                {{announcement.moment}}
+                                            </span>
+
+									</div><!-- end of post meta -->
+								</header>
+								<div class="post-body">{{ announcement.body }}</div>
+							</article>
+						</div>
+					{% endfor %}
+						</ul>
+						 <div class="pagination">
+                                                    {{ macros.pagination_widget(pagination, '.announcement') }}
+                                                </div>
+
+
+				         </div>
+  </div>
+	  {% if current_user.role_id == 3 %}
+
+<form action="" method="post" class="formOne" role="form">
+    {{ form.csrf_token }}
+
+
+			<div class="postOne"><label class="postThree" for="body"><font size="5" >Announcement:</font></label>
+                            <br>
+                <br>
+<!--        <input style="border:0;border-bottom:1px solid black;">-->
+
+                    <input class="postThree line" name="title" placeholder="Title" required></input>
+                <br>
+                <br>
+                <textarea class="announce" id="body" name="body" placeholder="Your Announcement" required></textarea>
+
+            </div>
+<br>
+			<br>
+
+<p>{{form.submit(class="Submit a")}}</p>
+
+</form>
+
+	  {% endif %}
+
+
+
